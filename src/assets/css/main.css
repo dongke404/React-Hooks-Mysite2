@@ -1,0 +1,60 @@
+
+.box {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e2e2e2;
+}
+.cell {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: left;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+.ant-card-body{
+  margin: 0;
+  padding: 0;
+}
+.ant-card-head-title {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #6b326b;
+}
+
+.sep10 {
+  height: 10px;
+}
+.sep20 {
+  height: 20px;
+}
+.sep3 {
+  height: 3px;
+}
+.sep5 {
+  height: 5px;
+}
+.gray {
+  color: #999;
+}
+
+.fr {
+  float: right;
+  text-align: right;
+}
+.fade {
+  color: #ccc;
+}
+
+.avatar48{
+  width: 48px;
+  height: 48px;
+}
+.avatar30{
+  width: 30px;
+  height: 30px;
+}
