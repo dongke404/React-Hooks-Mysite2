@@ -11,7 +11,9 @@ function Navigate(props) {
   useEffect(() => {
     let res = reqImagesTypes()
     res.then(result => {
-      setImageList(result.data);
+      if (result.status===0){
+        setImageList(result.data);
+      }
     }).catch((error) => { console.log(error) })
   }, [])
   return (

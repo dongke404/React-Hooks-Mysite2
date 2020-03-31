@@ -95,9 +95,9 @@ export default function Home() {
         {/* 左侧导航开始 */}
         <Col span={3} className='row2-left'>
           <Affix offsetTop={0}>
-            <div className="row2-left">
+            <div className="row2-left" style={{ minHeight:  document.body.clientHeight-50+ 'px' }}>
               <Menu
-                style={{ height: '100%' }}
+                style={{ height: "100%" }}
                 onClick={handleclick}
                 defaultSelectedKeys={["0"]}
               >
@@ -106,6 +106,7 @@ export default function Home() {
                   return <Menu.Item key={item.id}>{item.type}</Menu.Item>
                 })
                 }
+                
               </Menu>
             </div>
           </Affix>

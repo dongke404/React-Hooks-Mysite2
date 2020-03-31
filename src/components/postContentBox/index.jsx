@@ -4,7 +4,7 @@ import {Pagination} from 'antd';
 import "./index.less"
 import { reqTopic } from '../.../../../api';
 import { Link } from "react-router-dom";
-import moment from 'moment';
+import moment from '../../utils/moment';
 import {CurtypeId} from "../../pages/home/index"
 
 import {

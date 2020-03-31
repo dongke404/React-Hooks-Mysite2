@@ -8,3 +8,11 @@
 
 
 // console.log(Fn.prototype )
+
+
+function fn (){
+  console.log(1111)
+}
+const timer=setTimeout(fn,1000)
+clearTimeout(timer)
+

@@ -20,6 +20,8 @@ export function request0(config) {
       return res.data
     },
     err => {
+      message.error("请求错误")
+      return {status:-999}
     })
   // 3.发送真正的网络请求
   return instance(config)
@@ -47,7 +49,8 @@ export function request1(config) {
       return res.data
     }
   }, err => {
-    console.log("响应错误", err);
+    message.error("请求错误")
+    return {status:-999}
   })
 
   // 3.发送真正的网络请求
@@ -76,7 +79,8 @@ export function request2(config) {
       return res.data
     }
   }, err => {
-    console.log('请求失败: ' + err);
+    message.error("请求错误")
+    return {status:-999}
   })
   // 3.发送真正的网络请求
   return instance(config)

@@ -1,13 +1,15 @@
-import {request1,request0} from './request'
+import {request1,request0,request2} from './request'
 import axios from "axios"
-
+import  storage from "../utils/storageUtil"
+const utoken=storage.getUser().token
 //用户名校验请求
 export const reqCkLogname= (loginname) =>request0({url:'/reg',params:{loginname},method:'GET'})
 //注册请求
 export const reqReg= (loginname, email,password,nickname) =>request0({url:'/reg', data:{loginname,email,password,nickname},method:'POST'})
 //登陆请求
 export const reqLogin= (loginname,password) =>request0({url:'/login', data:{loginname,password},method:'POST'})
-//验证用户请求
+
+//提前验证用户是否正常
 export const reqCkuser= (token) =>request0({url:'/ckuser', data:{token},method:'POST'})
 
 //获取帖子内容
@@ -36,18 +38,23 @@ export const pbReply =(token,to_uid,comment_id,reply_content) =>request0({url:'/
 //获取新闻
 export const reqNews =() =>request1('/reqNews')
 
-// //获取音乐飙升榜
-// export const reqMusic=(id)=>ajax(Baseurl+`/top/list?idx=${id}`)
+//获取音乐飙升榜
+export const reqMusic=(idx)=>request2({url:'/top/list',params:{idx},method:'GET'})
 
-// //搜索自动补全音乐
-// export const seachSuggestMusic=(keywords)=>ajax(Baseurl+`/search/suggest?keywords=${keywords}`)
+//搜索自动补全音乐
+export const seachSuggestMusic=(keywords)=>request2({url:"/search/suggest",params:{keywords},method:'GET'})
 
-// //搜索音乐
-// export const seachMusic=(keywords)=>ajax(Baseurl+`/search?keywords=${keywords}`)
+//搜索音乐
+export const seachMusic=(keywords)=>request2({url:"/search",params:{keywords},method:'GET'})
 
-// //搜音乐详情
-// export const seachMusicDetail=(keywords)=>ajax(Baseurl+`/song/detail?ids=${keywords}`)
+//搜音乐详情
+export const seachMusicDetail=(ids)=>request2({url:"/song/detail",params:{ids},method:'GET'})
 
+//添加喜欢的音乐
+export const addmusicLike=(musicId,token=utoken)=>request0({url:"/addmusicLike",data:{token,musicId},method:'POST'})
+
+//获取用户喜欢的音乐
+export const getUserMusic=(uid,token=utoken)=>request0({url:"/requsermusic",data:{token,uid},method:'POST'})
 // //获取小说页小说
 // export const reqStorys=(stype)=>ajax(BASE+`/story?stype=${stype}`,)
 
