@@ -15,7 +15,7 @@ function Songlist(props) {
   const [myMusic, setmyMusic] = useState(music_like?music_like:[])
   const MusicPlayer = useContext(MusicContext)
   const SearchedSongs = useContext(searchContext)
-  
+
   
   //根据路由显示列表
   useEffect(() => {
@@ -24,12 +24,14 @@ function Songlist(props) {
     }else{
       setdata(SearchedSongs)
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.match.params.mid])
 
   //根据搜索显示列表
   useEffect(() => {
     setdata(SearchedSongs)
+   
   }, [SearchedSongs])
 
   //点击收藏
@@ -44,8 +46,6 @@ function Songlist(props) {
       message.info(result.msg)
     }
   }
-
-
 
   //获取排行列表
   const getMusicList = async (id) => {

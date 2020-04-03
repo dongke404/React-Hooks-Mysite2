@@ -1,0 +1,18 @@
+
+.photo-container{            
+  display: flex;/*显示模式设置为弹性盒子*/
+  flex-wrap: wrap;/*进行强制换行*/
+}        
+.photo-container:after{            
+  /*对最后一个伪元素进行最大限度伸缩*/            
+  content: ' ';            
+  flex-grow: 9999*9999999999;        
+}        
+.photo{  
+  cursor: pointer;           
+  height: 200px;/*高度*/            
+  width: auto;            
+  margin: 2px;            
+  flex-grow: 1;/*进行按比例伸缩*/            
+  object-fit: cover;/*进行裁切，并且图片按比例缩放*/        
+}

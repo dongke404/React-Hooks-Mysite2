@@ -85,6 +85,8 @@ class AudioPlay extends Component {
       //   this.onPlay();
       // }
       this.onPlay()
+  
+      
     }
   }
 
@@ -161,8 +163,13 @@ class AudioPlay extends Component {
   onPlay = () => {
     const audio = this.audio;
     this.setState({ isPause: true });
-    audio.play();
+    audio.play() 
   };
+
+  //无法播放的歌曲下一首
+  audioError=()=>{
+    this.nextMusic()
+  }
 
   // 暂停
   onPause = () => {
@@ -173,7 +180,10 @@ class AudioPlay extends Component {
 
   // 点击进度条
   onProcessClick = e => {
-    this.setProcess(e, "click");
+    try{this.setProcess(e, "click")}
+    catch{ 
+      alert("此歌无法播放")
+    }
   };
 
   // 设置进度条进度
@@ -487,7 +497,6 @@ class AudioPlay extends Component {
   onMusicListItemClick = id => {
     const { musicList } = this.state;
     const { currentMusic } = this.state;
-    console.log(currentMusic)
     const index = musicList.findIndex(item => {
       return item.id === id;
     });
@@ -752,7 +761,7 @@ class AudioPlay extends Component {
               </div>
             )}
             {/* 播放器基础组件 */}
-            <audio src={resource} ref={ref => (this.audio = ref)} />
+            <audio src={resource} onError={this.audioError} ref={ref => (this.audio = ref)} />
           </div>
         </div>
       </div>

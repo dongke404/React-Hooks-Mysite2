@@ -9,10 +9,7 @@
 
 // console.log(Fn.prototype )
 
+const token= 2||1
 
-function fn (){
-  console.log(1111)
-}
-const timer=setTimeout(fn,1000)
-clearTimeout(timer)
+console.log(token)
 

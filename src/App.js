@@ -3,15 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Login_reg from './pages/login_reg'
 import Index from './pages/index'
+import NovelNav from "./pages/novel/novelNav"
 import "./assets/css/iconfont.css"
 import "./assets/css/main.css"
 import "./assets/css/normailize.css"
 import { Provider } from 'react-keep-alive';
-
-
-
-
-
 
 export default function App() {
   return (
@@ -20,6 +16,7 @@ export default function App() {
         <Switch>
           <Route path="/login" component={Login_reg} />
           <Route path="/reg" component={Login_reg} />
+          <Route path="/novel/:dir" component={NovelNav} />
           <Route path="/" component={Index} />
         </Switch>
       </Provider>

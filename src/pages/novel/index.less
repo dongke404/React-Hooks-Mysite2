@@ -1,0 +1,110 @@
+.novel-sider {
+  background-color: #001529;
+  height: calc(100vh - 178px);
+}
+
+.books {
+  display: flex;
+  flex-wrap: wrap;
+
+  .book-info {
+    display: flex;
+    align-items: center;
+    width: 360px;
+    height: 150px;
+    margin-top: 10px;
+
+    border-bottom: solid 1px #e6e6e6;
+    .book-info-image {
+      margin: 0px 15px;
+      img {
+        width: 90px;
+        height: 120px;
+      }
+    }
+    .book-info-text {
+      height: 100%;
+      .book-info-title {
+        .book-info-titlehead {
+          font-size: 20px;
+        }
+        .book-info-author {
+          color: #1412128c;
+        }
+      }
+    }
+  }
+}
+
+.story-detail {
+  background-color: #e7e1d4;
+  .story-detail-head {
+    background-color: #f3f0e8;
+    display: flex;
+    justify-content: center;
+    .story-detail-head-total {
+      width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+      .story-detail-head-left {
+        font-size: 30px;
+      }
+      .story-detail-head-right {
+        span {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+.story-dirs-contain {
+  width: 1280px;
+  margin: 0px auto;
+  margin-top: 10px;
+  h1 {
+    text-align: center;
+  }
+  .story-dirs-info {
+    display: flex;
+    justify-content: center;
+    .story-dirs-tai {
+      width: 960px;
+      .story-dirs-tai-t {
+        display: inline-block;
+        width: 200px;
+      }
+      .story-dirs-tai-i {
+        padding: 10px 0px;
+      }
+    }
+  }
+  .story-dirs-main {
+    width: 1120px;
+    margin: 10px 0 0 160px;
+    display: flex;
+    flex-wrap: wrap;
+    div {
+      margin: 10px 0px;
+      width: 33%;
+      font-size: 18px;
+    }
+  }
+}
+
+.story-text-body {
+  width: 960px;
+  margin: 0px auto;
+  margin-top: 10px;
+
+  .story-text-body-content {
+    margin-top: 20px;
+    background-color: #f8f3e9;
+    h1 {
+      text-align: center;
+      padding-top: 50px;
+    }
+  }
+}

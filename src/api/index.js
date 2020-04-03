@@ -55,28 +55,31 @@ export const addmusicLike=(musicId,token=utoken)=>request0({url:"/addmusicLike",
 
 //获取用户喜欢的音乐
 export const getUserMusic=(uid,token=utoken)=>request0({url:"/requsermusic",data:{token,uid},method:'POST'})
-// //获取小说页小说
-// export const reqStorys=(stype)=>ajax(BASE+`/story?stype=${stype}`,)
 
-// //获取小说类型
-// export const reqStoryTypeList=()=>ajax(BASE+"/storyTypeList")
+//获取小说页小说
+export const reqStorys=(stype)=>request0({url:"/story",params:{stype},method:'GET'})
+
+//获取小说类型
+export const reqStoryTypeList=()=>request0("/storyTypeList")
 
 // //获取小说目录
-// export const reqStoryDirs=(storyid)=>ajax(BASE+`/storydirs?storyid=${storyid}`)
+export const reqStoryDirs=(storyid)=>request0(`/storydirs?storyid=${storyid}`)
 
-// //获取小说内容
-// export const reqStoryContent=(storyid,path)=>ajax(BASE+"/storyContent",{storyid,path})
+//获取小说内容
+export const reqStoryContent=(storyid,path,token)=>request0({url:"/storyContent",data:{storyid,path,token},method:'POST'})
 
-// //获取下一页
-// export const reqStoryNextPage=(storyid,path)=>ajax(BASE+"/storyNextPage",{storyid,path})
+//获取下一页
+export const reqStoryNextPage=(storyid,path,token)=>request0({url:"/storyNextPage",data:{storyid,path,token},method:'POST'})
 
+//获取历史记录
+export const reqStoryHistory=(token)=>request0({url:"/storyHistory",data:{token},method:'POST'})
 
 //获取图片类型列表
 export const reqImagesTypes=()=>request1("/imagesTypes")
 
-// //获取图片
-// export const reqimages=(typeId,curPage)=>ajax(BASE+"/imagesInfo",{typeId,curPage})
+//获取图片
+export const reqimages=(typeId,curPage)=>request0({url:"/imagesInfo",params:{typeId,curPage},method:'GET'})
 
 
 // //获取电影列表
-// export const reqMovies=()=>ajax(BASE+"/reqMovies")
+export const reqMovies=()=>request1("/reqMovies")

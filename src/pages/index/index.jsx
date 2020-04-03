@@ -22,7 +22,7 @@ import { songs2player } from '../../utils/handSongs';
 const { Header } = Layout;
 export const MusicContext = React.createContext()
 
-export default function Index() {
+export default function Index(props) {
   const music_like = storage.getUser().music_like
   const [flash, setflash] = useState(0)
   const [playerList, setplayerList] = useState([])
@@ -30,7 +30,7 @@ export default function Index() {
 
 
   useEffect(() => {
-    if (music_like && music_like.length!==0) {
+    if (music_like && music_like.length !== 0) {
       const data = getInitPlayerMusic(music_like)
       data.then(
         val => {
@@ -43,9 +43,13 @@ export default function Index() {
   //获取音乐列表
 
   const getInitPlayerMusic = async (music_like) => {
-    const result = await seachMusicDetail(music_like.join(","))
-    if (result.code === 200) {
-      return songs2player(result.songs)
+    try {
+      const result = await seachMusicDetail(music_like.join(","))
+      if (result.code === 200) {
+        return songs2player(result.songs)
+      }
+    } catch{
+      storage.removeUser()
     }
   }
 
@@ -87,7 +91,7 @@ export default function Index() {
             <Route path="/post/:postId" component={Comment} />
             <Route path="/music/:mid" component={Music} />
             <Route path="/novel" component={Novel} />
-            <Route path="/photo/:typeId" component={Photo} />
+            <Route path="/photo" component={Photo} />
             <Route path="/movie" component={Movie} />
             <Route path="/userInfo" component={UserInfo} />
             <Redirect from="/*" to="/home/newest" />

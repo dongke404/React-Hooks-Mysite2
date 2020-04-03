@@ -1,21 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Menu } from 'antd';
 import './index.less'
 import { Link, withRouter } from "react-router-dom";
-import { reqImagesTypes } from '../../api';
 
 
-const { SubMenu } = Menu;
 function Navigate(props) {
-  const [imageList, setImageList] = useState([])
-  useEffect(() => {
-    let res = reqImagesTypes()
-    res.then(result => {
-      if (result.status===0){
-        setImageList(result.data);
-      }
-    }).catch((error) => { console.log(error) })
-  }, [])
   return (
     <div>
       <Menu
@@ -28,17 +17,12 @@ function Navigate(props) {
         <Menu.Item className='menu_item' key='music'>
           <Link to='/music/3'>音乐</Link>
         </Menu.Item>
-        <Menu.Item className='menu_item' key='story'>
+        <Menu.Item className='menu_item' key='novel'>
           <Link to='/novel'>小说</Link>
         </Menu.Item>
-        <SubMenu
-          className='menu_item'
-          title={<span className="submenu-title-wrapper">图片</span>}
-        >
-          {imageList.map((item) => {
-            return <Menu.Item key={item.id}><Link to={'/photo/' + item.id}>{item.type}</Link></Menu.Item>
-          })}
-        </SubMenu>
+        <Menu.Item className='menu_item' key='photo' >
+          <Link to='/photo'>图片</Link>
+        </Menu.Item>
         <Menu.Item className='menu_item' key='movie' >
           <Link to='/movie'>电影</Link>
         </Menu.Item>
