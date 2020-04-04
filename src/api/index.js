@@ -1,4 +1,4 @@
-import {request1,request0,request2} from './request'
+import {request0,request1} from './request'
 import axios from "axios"
 import  storage from "../utils/storageUtil"
 const utoken=storage.getUser().token
@@ -21,7 +21,7 @@ export const reqTopicTypes= () =>request0('/topicTypes')
 //上传头像
 export const uploadHeadImg=(formdata)=>{    
   const config = {headers: { "encrypt": "multipart/form-data"}};
-  return axios.post("http://127.0.0.1:5000/uploadhead", formdata, config)
+  return axios.post("/api/uploadhead", formdata, config)
 }
 //获取帖子详情
 export const reqPostDetail= (id) =>request0( {url:'/reqpostdetail',params:{id},method:'GET'})
@@ -36,19 +36,8 @@ export const upComment =(token,topic_id,comment) =>request0( {url:'/upComment',d
 export const pbReply =(token,to_uid,comment_id,reply_content) =>request0({url:'/pbReply',data:{token,to_uid,comment_id,reply_content},method:'POST'})
 
 //获取新闻
-export const reqNews =() =>request1('/reqNews')
+export const reqNews =() =>request0('/reqNews')
 
-//获取音乐飙升榜
-export const reqMusic=(idx)=>request2({url:'/top/list',params:{idx},method:'GET'})
-
-//搜索自动补全音乐
-export const seachSuggestMusic=(keywords)=>request2({url:"/search/suggest",params:{keywords},method:'GET'})
-
-//搜索音乐
-export const seachMusic=(keywords)=>request2({url:"/search",params:{keywords},method:'GET'})
-
-//搜音乐详情
-export const seachMusicDetail=(ids)=>request2({url:"/song/detail",params:{ids},method:'GET'})
 
 //添加喜欢的音乐
 export const addmusicLike=(musicId,token=utoken)=>request0({url:"/addmusicLike",data:{token,musicId},method:'POST'})
@@ -75,11 +64,23 @@ export const reqStoryNextPage=(storyid,path,token)=>request0({url:"/storyNextPag
 export const reqStoryHistory=(token)=>request0({url:"/storyHistory",data:{token},method:'POST'})
 
 //获取图片类型列表
-export const reqImagesTypes=()=>request1("/imagesTypes")
+export const reqImagesTypes=()=>request0("/imagesTypes")
 
 //获取图片
 export const reqimages=(typeId,curPage)=>request0({url:"/imagesInfo",params:{typeId,curPage},method:'GET'})
 
-
 // //获取电影列表
-export const reqMovies=()=>request1("/reqMovies")
+export const reqMovies=()=>request0("/reqMovies")
+
+
+//获取音乐飙升榜--------------------------------------------------------------------------------------
+export const reqMusic=(idx)=>request1({url:'/top/list',params:{idx},method:'GET'})
+
+//搜索自动补全音乐
+export const seachSuggestMusic=(keywords)=>request1({url:"/search/suggest",params:{keywords},method:'GET'})
+
+//搜索音乐
+export const seachMusic=(keywords)=>request1({url:"/search",params:{keywords},method:'GET'})
+
+//搜音乐详情
+export const seachMusicDetail=(ids)=>request1({url:"/song/detail",params:{ids},method:'GET'})

@@ -8,8 +8,11 @@
 
 
 // console.log(Fn.prototype )
+var dayjs = require('dayjs')
+var relativeTime = require('dayjs/plugin/relativeTime')
+require('dayjs/locale/zh-cn')
+dayjs.locale('zh-cn') // 全局使用
+dayjs.extend(relativeTime)
 
-const token= 2||1
-
-console.log(token)
+console.log(dayjs().fromNow())
 

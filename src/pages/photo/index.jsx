@@ -8,11 +8,10 @@ import { Menu, Affix } from "antd";
 export default function Photo(props) {
   const [ImageList, setImageList] = useState([]);
 
-  // const [curKey, setcurKey] = useState("1");
   useEffect(() => {
     getImagesTypes();
-    props.history.push("/photo/1")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    props.history.push("/photo/1");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getImagesTypes = async () => {
@@ -21,24 +20,23 @@ export default function Photo(props) {
       setImageList(result.data);
     }
   };
-
+  
   return (
     <div>
       <Affix>
-      <Menu mode="horizontal" >
-        {ImageList.map(item => {
-          return (
-            <Menu.Item key={item.id} >
-              <Link to={"/photo/" + item.id}>{item.type}</Link>
-            </Menu.Item>
-          );
-        })}
-      </Menu>
+        <Menu mode="horizontal">
+          {ImageList.map((item) => {
+            return (
+              <Menu.Item key={item.id}>
+                <Link to={"/photo/" + item.id}>{item.type}</Link>
+              </Menu.Item>
+            );
+          })}
+        </Menu>
       </Affix>
       <Switch>
         <Route path="/photo/:typeId" component={Photos} />
       </Switch>
-      
     </div>
   );
 }

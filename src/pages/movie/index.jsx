@@ -1,31 +1,29 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import Xgplayer from "xgplayer-react";
 import { Card, Popover, Tag } from "antd";
 import "./index.less";
 import { reqMovies } from "../../api";
-// import Player from "xgplayer";
+import { MOVIEBASEURL } from "../../config";
 
-const Baseurl = "http://biubiubiu.icu";
 const gridStyle = {
   width: "12.5%",
   textAlign: "center",
   height: "200px",
   padding: 10,
-  overflow: "hidden"
+  overflow: "hidden",
 };
 
 let config = {
-  id: 'mse',
-  url: "http://biubiubiu.icu/static/videos/27010768.mp4",
-  width:"960px",
-  height:"540px"
+  id: "mse",
+  url: MOVIEBASEURL+"/static/videos/27010768.mp4",
+  width: "960px",
+  height: "540px",
 };
-
 
 export default function Movie() {
   const [movieList, setmovieList] = useState([]);
   const [curMovieInfo, setcurMovieInfo] = useState({});
-  const [Player, setPlayer] = useState(null)
+  const [Player, setPlayer] = useState(null);
 
   useEffect(() => {
     getMovies();
@@ -46,7 +44,7 @@ export default function Movie() {
     }
   };
 
-  const onPlay = e => {
+  const onPlay = (e) => {
     var curMovieInfo = {};
     const title = e.target.getAttribute("title");
     const actors = e.target.getAttribute("actors");
@@ -57,8 +55,8 @@ export default function Movie() {
     curMovieInfo.actors = actors;
     curMovieInfo.introduce = introduce;
     curMovieInfo.comment = comment;
-    Player.start(Baseurl + "/static/videos/" + curPlay_url + ".mp4")
-    Player.play()
+    Player.start(MOVIEBASEURL+"/static/videos/" + curPlay_url + ".mp4");
+    Player.play();
     setcurMovieInfo(curMovieInfo);
     window.scrollTo(0, 0);
   };
@@ -68,7 +66,12 @@ export default function Movie() {
       <div className="movie-box-part1">
         <div className="movie-box-left">
           <div id="mse">
-            <Xgplayer config={config} playerInit={(player)=>{setPlayer(player) }} />
+            <Xgplayer
+              config={config}
+              playerInit={(player) => {
+                setPlayer(player);
+              }}
+            />
           </div>
         </div>
         <div className="movie-box-right">
@@ -86,7 +89,7 @@ export default function Movie() {
         className="movie-box-part2"
         title="点击播放(需要的请在首页发帖或联系站主)"
       >
-        {movieList.map(item => {
+        {movieList.map((item) => {
           return (
             <Popover
               key={item.subject.id}
@@ -98,19 +101,13 @@ export default function Movie() {
               trigger="hover"
             >
               <Card.Grid style={gridStyle}>
-                {/* <div flag={item.subject.id} onClick={this.onPlay}> */}
                 <img
                   className="movie-img"
-                  src={
-                    Baseurl +
-                    "/static/images/movieImg/" +
-                    item.subject.id +
-                    ".jpg"
-                  }
+                  src={"/static/images/movieImg/" + item.subject.id + ".jpg"}
                   alt={item.subject.id}
                   flag={item.subject.id}
                   title={item.subject.title}
-                  actors={item.subject.actors.slice(0, 10).map(item => item)}
+                  actors={item.subject.actors.slice(0, 10).map((item) => item)}
                   introduce={item.introduce}
                   comment={item.subject.short_comment.content}
                   onClick={onPlay}
@@ -121,7 +118,6 @@ export default function Movie() {
                     {item.subject.rate}
                   </span>
                 </p>
-                {/* </div> */}
               </Card.Grid>
             </Popover>
           );
@@ -131,7 +127,7 @@ export default function Movie() {
   );
 }
 
-const Content = props => {
+const Content = (props) => {
   return (
     <div style={{ width: 250 }}>
       <div>评分：{props.info.rate}</div>

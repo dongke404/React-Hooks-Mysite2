@@ -4,7 +4,6 @@ import { Modal, Slider, message } from 'antd';
 import { uploadHeadImg } from "../../api"
 import base64toFile from "../../utils/base64toFile"
 import AvatarEditor from 'react-avatar-editor'
-// import {useIsUserLogin} from "../../hooks/hooks"
 import storage from "../../utils/storageUtil"
 
 export default function Cavatar(props) {

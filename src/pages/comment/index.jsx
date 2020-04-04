@@ -3,9 +3,8 @@ import { message, Button } from 'antd';
 import "./index.less"
 import { reqPostDetail, upComment, pbReply } from '../../api';
 import storage from '../../utils/storageUtil';
-import moment from 'moment';
 import ReplayStyle from "./replayStyle"
-
+var dayjs = require('dayjs')
 
 export const CommentContext = React.createContext();
 
@@ -159,7 +158,7 @@ const Comment = (props) => {
             <span>{theme.type}</span>
             <div className="sep10"></div>
             <h1>{theme.title}</h1>
-            <small className="gray"><a href="#sadsa">{theme.user}</a> · {moment(theme.pub_date).fromNow()} · {theme.read_num} 次点击 &nbsp; </small>
+            <small className="gray"><a href="#sadsa">{theme.user}</a> · {dayjs(theme.pub_date).fromNow()} · {theme.read_num} 次点击 &nbsp; </small>
           </div>
           <div className="cell">
             <div className="topic_content">
@@ -198,7 +197,7 @@ const Comment = (props) => {
                           </div>
                           <div className="sep3"></div>
                           <strong>{item.user.nickname}</strong>
-                          <span className="ago"> {moment(item.date).fromNow()}</span>
+                          <span className="ago"> {dayjs(item.date).fromNow()}</span>
                               &nbsp;&nbsp;
                           <div className="sep5"></div>
                           <div className="reply_content">
