@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./index.less";
 import { Link } from "react-router-dom";
-import { Avatar, Popover, message } from "antd";
+import { Avatar, Popover } from "antd";
 import storage from "../../utils/storageUtil";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Cavatar from "../cAvatar";

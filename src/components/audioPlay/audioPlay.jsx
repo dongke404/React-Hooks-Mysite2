@@ -452,7 +452,7 @@ class AudioPlay extends Component {
   // TODO: 单首歌加入我喜欢
   onAddFile = async(e, item) => {
     e.stopPropagation();
-    const result=await addmusicLike(item.id,storage.getUser().token)
+    const result=await addmusicLike(item.id.toString(),storage.getUser().token)
     if(result.status===0){
       let user=storage.getUser()
       user.music_like=result.data
