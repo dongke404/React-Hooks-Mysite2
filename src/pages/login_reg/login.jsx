@@ -1,40 +1,39 @@
-import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
-import { Form, Input, Button, Checkbox, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import { Form, Input, Button, Checkbox, message } from "antd";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
-import storage from '../../utils/storageUtil'
-import { reqLogin } from "../../api"
-
+import storage from "../../utils/storageUtil";
+import { reqLogin } from "../../api";
 
 const Login = (props) => {
-  const rname = storage.getLogInfo().loginname
-  const rpwd = storage.getLogInfo().password
+  const rname = storage.getLogInfo().loginname;
+  const rpwd = storage.getLogInfo().password;
 
   if (storage.getUser()) {
-    props.history.push("/home")
+    props.history.push("/home");
   }
 
-
-  const onFinish = values => {
-    const { loginname, password, remember } = values
-    const result = reqLogin(loginname, password)
-    result.then(
-      (val) => {
+  const onFinish = (values) => {
+    const { loginname, password, remember } = values;
+    const result = reqLogin(loginname, password);
+    result
+      .then((val) => {
         if (val.status === 0) {
-          message.success("登陆成功")
-          storage.saveUser(val.data)
+          message.success("登陆成功");
+          storage.saveUser(val.data);
+          storage.saveFollow(val.myfollows);
           if (remember === true) {
-            storage.saveLogInfo({ loginname, password })
+            storage.saveLogInfo({ loginname, password });
           } else {
-            storage.removeLogInfo()
+            storage.removeLogInfo();
           }
-          props.history.go(-1)
+          props.history.go(-1);
         } else {
-          message.info(val.msg)
+          message.info(val.msg);
         }
-      }
-    ).catch(e => console.log(e))
+      })
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -45,32 +44,36 @@ const Login = (props) => {
         initialValues={{
           remember: true,
           loginname: rname,
-          password: rpwd
+          password: rpwd,
         }}
         onFinish={onFinish}
       >
         <Form.Item
-
           name="loginname"
           rules={[
-            { required: true, message: 'Please input your username!' },
-            { pattern: /^[a-zA-Z0-9_]+$/, message: '用户名必须由字母数字下划线组成' }
+            { required: true, message: "Please input your username!" },
+            {
+              pattern: /^[a-zA-Z0-9_]+$/,
+              message: "用户名必须由字母数字下划线组成",
+            },
           ]}
         >
-          <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Username"
+          />
         </Form.Item>
         <Form.Item
           name="password"
           rules={[
-            { min: 4, message: '用户名需要大于4位' },
-            { required: true, message: 'Please input your Password!' },
+            { min: 4, message: "用户名需要大于4位" },
+            { required: true, message: "Please input your Password!" },
           ]}
         >
           <Input
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
             placeholder="Password"
-
           />
         </Form.Item>
         <Form.Item>
@@ -83,15 +86,25 @@ const Login = (props) => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" className="login-form-button">
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form-button"
+          >
             登陆
-        </Button>
-          <Link to='reg'><Button type="primary" htmlType="submit" className="login-form-button">
-            注册
-        </Button></Link >
+          </Button>
+          <Link to="reg">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              注册
+            </Button>
+          </Link>
         </Form.Item>
       </Form>
     </div>
   );
 };
-export default withRouter(Login)
+export default withRouter(Login);

@@ -7,10 +7,10 @@ module.exports = override(
   }),
   addLessLoader({
       javascriptEnabled: true,
-      modifyVars: { '@primary-color': '#61dafb' },
+      modifyVars: { '@primary-color': '#0b5da6' },
     }),
-  addWebpackExternals({
-      react:"React",
-      reactDom:"ReactDom",
-  }),
+  // addWebpackExternals({
+  //     react:"React",
+  //     reactDom:"ReactDom",
+  // }),
 );

@@ -8,7 +8,7 @@
   right: 0;
   height: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100001;
   zoom: 1;
 }
 .mainLayout:hover{
@@ -18,7 +18,7 @@
   right: 0;
   height: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100001;
   zoom: 1;
 }
 .mainLayout-lock {

@@ -26,8 +26,8 @@ function Navigate(props) {
         <Menu.Item className='menu_item' key='movie' >
           <Link to='/movie'>电影</Link>
         </Menu.Item>
-        <Menu.Item className='menu_item' key='userInfo'>
-          <Link to='/userInfo'>个人主页</Link>
+        <Menu.Item className='menu_item' key='myinfo'>
+          <Link to='/myinfo/myCltTopic'>个人主页</Link>
         </Menu.Item>
       </Menu>
     </div>

@@ -10,9 +10,10 @@ import Music from '../music';
 import Novel from '../novel';
 import Photo from '../photo';
 import Movie from '../movie';
-import UserInfo from '../userInfo';
+import Myinfo from '../myInfo';
 import Comment from '../comment';
 import PubTheme from '../pubTheme';
+import User from "../user"
 
 import storage from "../../utils/storageUtil"
 import { seachMusicDetail } from "../../api"
@@ -93,7 +94,8 @@ export default function Index(props) {
             <Route path="/novel" component={Novel} />
             <Route path="/photo" component={Photo} />
             <Route path="/movie" component={Movie} />
-            <Route path="/userInfo" component={UserInfo} />
+            <Route path="/myinfo" component={Myinfo} />
+            <Route path="/user/:uid" component={User} />
             <Redirect from="/*" to="/home/newest" />
           </Switch>
         </div>

@@ -19,7 +19,7 @@ export default function Editor() {
 
   return (
     <div>
-      <div ref={elem} id="weditor" style={{ textAlign: "left" }}></div>
+      <div ref={elem} id="weditor" style={{ textAlign: "left" ,zIndex:-1}}></div>
     </div>
   )
 }

@@ -6,16 +6,21 @@ import storage from "../../utils/storageUtil";
 import { message } from "antd";
 
 export default function PubTheme(props) {
+  const user = storage.getUser();
   const titleRef = useRef(null);
   const themeType = useRef(null);
   const [topicTypes, setTopicTypes] = useState([]);
+  const [numdata, setnumdata] = useState({});
 
   useEffect(() => {
     const toCkuser = async () => {
-      const token = storage.getUser().token;
+      const token = user.token || "";
       let res = await reqCkuser(token);
       if (res.status !== 0) {
         props.history.push("/login");
+      } else {
+        storage.saveNuminfo(res.data);
+        setnumdata(res.data);
       }
     };
     toCkuser();
@@ -47,7 +52,7 @@ export default function PubTheme(props) {
         .then((res) => {
           if (res.status === 0) {
             message.info("发布成功");
-            props.history.push("/home")
+            props.history.push("/home");
           } else {
             message.error(res.msg);
           }
@@ -68,16 +73,12 @@ export default function PubTheme(props) {
               <tbody>
                 <tr>
                   <td>
-                    <img
-                      src="//cdn.v2ex.com/gravatar/a591f7ef1d386126135d752fd69f50e6?s=48&amp;d=retro"
-                      className="avatar"
-                      alt=""
-                    />
+                    <img src={user.head_link} className="avatar" alt="" />
                   </td>
                   <td style={{ width: 10, verticalAlign: "top" }}></td>
                   <td>
-                    <div className="authorName">作者名</div>
-                    <div>作者简介</div>
+                    <div className="authorName">{user.nickname}</div>
+                    <div>作者简介: {user.introduction} </div>
                   </td>
                 </tr>
               </tbody>
@@ -87,17 +88,17 @@ export default function PubTheme(props) {
               <tbody>
                 <tr>
                   <td>
-                    <span>0</span>
+                    <span>{numdata.voke_num}</span>
                     <div className="sep3"></div>
                     <span>获赞</span>
                   </td>
                   <td>
-                    <span>0</span>
+                    <span>{numdata.topic_num}</span>
                     <div></div>
                     <span>主题</span>
                   </td>
                   <td>
-                    <span>0</span>
+                    <span>{numdata.followed_num}</span>
                     <div className="sep3"></div>
                     <span>被关注</span>
                   </td>

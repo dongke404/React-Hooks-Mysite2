@@ -10,7 +10,7 @@ export default function Photo(props) {
 
   useEffect(() => {
     getImagesTypes();
-    props.history.push("/photo/1");
+    props.history.push("/photo/2");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -20,7 +20,6 @@ export default function Photo(props) {
       setImageList(result.data);
     }
   };
-  
   return (
     <div>
       <Affix>

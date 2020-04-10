@@ -3,11 +3,12 @@ import { pbReply } from "../../api";
 import { message } from "antd";
 import storage from "../../utils/storageUtil";
 import { CommentContext } from "./index";
+import { Link } from "react-router-dom";
 var dayjs = require("dayjs");
 
 export default function Replys(props) {
   const comContext = useContext(CommentContext);
-  const token = storage.getUser().token;
+  const token = storage.getUser().token || "";
   const [replyTXT, setReplyTXT] = useState("");
 
   //提交回复
@@ -46,7 +47,7 @@ export default function Replys(props) {
       hiddenInpBox();
       comContext.updateData();
     } else {
-      message.error("失败的请求");
+      message.error(result.msg);
     }
   };
 
@@ -56,7 +57,7 @@ export default function Replys(props) {
         return (
           <div key={item.id}>
             <div className="cell">
-              <table style={{width:'100%'}}>
+              <table style={{ width: "100%" }}>
                 <tbody className="cmtTable">
                   <tr>
                     <td className="td1">
@@ -78,7 +79,13 @@ export default function Replys(props) {
                       </div>
                       <div className="sep3"></div>
                       <strong>
-                        {item.author}&nbsp;回复&nbsp;{item.to_nickname}{" "}
+                        <Link to={"/user/" + item.author_id}>
+                          {item.author}
+                        </Link>
+                        &nbsp;回复&nbsp;{" "}
+                        <Link to={"/user/" + item.to_id}>
+                          {item.to_nickname}
+                        </Link>
                       </strong>
                       <span className="ago">
                         {" "}

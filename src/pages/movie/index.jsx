@@ -30,18 +30,22 @@ export default function Movie() {
   }, []);
 
   const getMovies = async () => {
-    const result = await reqMovies();
-    var curMovieInfo = {};
-    curMovieInfo.title = result.data[0].subject.title;
-    curMovieInfo.actors = result.data[0].subject.actors.reduce(
-      (pre, cur) => pre + " " + cur
-    );
-    curMovieInfo.introduce = result.data[0].introduce;
-    curMovieInfo.comment = result.data[0].subject.short_comment.content;
-    if (result.status === 0) {
-      setmovieList(result.data);
-      setcurMovieInfo(curMovieInfo);
+    try{const result = await reqMovies();
+      var curMovieInfo = {};
+      curMovieInfo.title = result.data[0].subject.title;
+      curMovieInfo.actors = result.data[0].subject.actors.reduce(
+        (pre, cur) => pre + " " + cur
+      );
+      curMovieInfo.introduce = result.data[0].introduce;
+      curMovieInfo.comment = result.data[0].subject.short_comment.content;
+      if (result.status === 0) {
+        setmovieList(result.data);
+        setcurMovieInfo(curMovieInfo);
+      }
+    }catch{
+      alert("请求错误")
     }
+    
   };
 
   const onPlay = (e) => {

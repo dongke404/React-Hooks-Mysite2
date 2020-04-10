@@ -10,7 +10,7 @@ import AddressNav from "./addressNav";
 export const CurtypeId = React.createContext();
 
 export default function Home() {
-  const [newsData, setnewsData] = useState([]);
+  const [newsData, setnewsData] = useState("");
   const [topicTypes, setTopicTypes] = useState([]);
   const [currentpage, setcurrentpage] = useState(1);
   const [typeId, setTypeId] = useState("0");
@@ -19,7 +19,13 @@ export default function Home() {
     const getNews = async () => {
       let res = await reqNews();
       if (res.status === 0) {
-        setnewsData(res.data);
+        if (
+          res.data.banner.length !== 0 &&
+          res.data.sideimg.length !== 0 &&
+          res.data.hotevent.length !== 0
+        ) {
+          setnewsData(res.data);
+        }
       } else {
         message.error(res.msg);
       }
@@ -39,7 +45,7 @@ export default function Home() {
     getTopicTypes();
   }, []);
 
-  const hotevents = newsData.length === 0 ? [] : newsData.hotevent;
+  const hotevents = newsData ? newsData.hotevent : [];
   const hoteventList = useMemo(
     () => hotevents.slice((currentpage - 1) * 10, currentpage * 10),
     [currentpage, hotevents]
@@ -56,41 +62,37 @@ export default function Home() {
       <Row className="row1">
         {/* 轮播图开始 */}
         <Col span={12}>
-          <Slideshow bannerData={newsData.banner ? newsData.banner : []} />
+          <Slideshow bannerData={newsData ? newsData.banner : []} />
         </Col>
         {/* 轮播图结束 */}
         {/* 侧边图开始 */}
         <Col span={6}>
           <div className="row1-top">
             <a
-              href={newsData.length === 0 ? "" : newsData.sideimg[0].sideUrl}
+              href={newsData ? newsData.sideimg[0].sideUrl : ""}
               target="_black"
             >
               <img
-                src={
-                  newsData.length === 0 ? "" : newsData.sideimg[0].sideImgUrl
-                }
-                alt={newsData.length === 0 ? "" : newsData.sideimg[0].sidetitle}
+                src={newsData ? newsData.sideimg[0].sideImgUrl : ""}
+                alt=""
               />
             </a>
             <div className="img-title">
-              {newsData.length === 0 ? "" : newsData.sideimg[0].sidetitle}
+              {newsData ? newsData.sideimg[0].sidetitle : ""}
             </div>
           </div>
           <div className="row1-botton">
             <a
-              href={newsData.length === 0 ? "" : newsData.sideimg[1].sideUrl}
+              href={newsData ? newsData.sideimg[1].sideUrl : ""}
               target="_black"
             >
               <img
-                src={
-                  newsData.length === 0 ? "" : newsData.sideimg[1].sideImgUrl
-                }
-                alt={newsData.length === 0 ? "" : newsData.sideimg[1].sidetitle}
+                src={newsData ? newsData.sideimg[1].sideImgUrl : ""}
+                alt=""
               />
             </a>
             <div className="img-title">
-              {newsData.length === 0 ? "" : newsData.sideimg[1].sidetitle}
+              {newsData ? newsData.sideimg[1].sidetitle : ""}
             </div>
           </div>
         </Col>

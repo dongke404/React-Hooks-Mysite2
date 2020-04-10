@@ -1,39 +1,53 @@
-import React, { useState } from 'react'
-import { Menu, Layout, Affix } from 'antd';
-import "./index.less"
-import { reqStorys, reqStoryTypeList } from '../../api';
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import { Menu, Layout, Affix, message } from "antd";
+import "./index.less";
+import { reqStorys, reqStoryTypeList, reqSearchBook } from "../../api";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Input } from "antd";
 
+const { Search } = Input;
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
 
-
 export default function Novel() {
-  const [data, setdata] = useState([])
-  const [storyTypeList, setstoryTypeList] = useState([])
+  const [data, setdata] = useState([]);
+  const [title, setTitle] = useState("全部");
+  const [storyTypeList, setstoryTypeList] = useState([]);
 
-  const handleClick = e => {
-    getStorys(e.item.props.children)
+  const handleClick = (e) => {
+    setTitle(e.key);
+    getStorys(e.item.props.children);
   };
 
   useEffect(() => {
-    getStorys("")
-    getStoryTypeList()
-  }, [])
+    getStorys("");
+    getStoryTypeList();
+  }, []);
 
   const getStorys = async (storyType) => {
-    const result = await reqStorys(storyType)
+    const result = await reqStorys(storyType);
     if (result.status === 0) {
-      setdata(result.data)
+      setdata(result.data);
     }
-  }
+  };
   const getStoryTypeList = async () => {
-    const result = await reqStoryTypeList()
+    const result = await reqStoryTypeList();
     if (result.status === 0) {
-      setstoryTypeList(result.data)
+      setstoryTypeList(result.data);
+    } else {
+      message.error(result.msg);
     }
-  }
+  };
+  const searchBook = async (value) => {
+    const result = await reqSearchBook(value);
+    if (result.status === 0) {
+      setdata(result.data);
+    } else {
+      message.error(result.msg);
+    }
+  };
+
   return (
     <Layout>
       <Sider>
@@ -41,8 +55,8 @@ export default function Novel() {
           <Affix>
             <Menu
               onClick={handleClick}
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1', "sub2"]}
+              defaultSelectedKeys={["1"]}
+              defaultOpenKeys={["sub1", "sub2"]}
               mode="inline"
               theme="dark"
             >
@@ -54,8 +68,10 @@ export default function Novel() {
                   </span>
                 }
               >
-                <Menu.Item key="1">全部小说</Menu.Item>
-                {storyTypeList.map(item => <Menu.Item key={item}>{item}</Menu.Item>)}
+                <Menu.Item key="全部">全部小说</Menu.Item>
+                {storyTypeList.map((item) => (
+                  <Menu.Item key={item}>{item}</Menu.Item>
+                ))}
               </SubMenu>
               <SubMenu
                 key="sub2"
@@ -72,32 +88,45 @@ export default function Novel() {
         </div>
       </Sider>
       <Content style={{ backgroundColor: "white" }}>
-        <div className="books" >
+        <div className="books">
+          <div className="searchBook">
+            <h2>{title}</h2>
+            <Search
+              placeholder=""
+              onSearch={searchBook}
+              style={{ width: 200 }}
+            />
+          </div>
           {data.map((book, index) => {
             return (
               <div key={book.id} className="book-info">
-                <Link to={"/novel/" + book.id} target="_blank" >
+                <Link to={"/novel/" + book.id} target="_blank">
                   <div className="book-info-image">
                     <img src={book.images} alt={book.images} />
                   </div>
                 </Link>
                 <div className="book-info-text">
-                  <Link to={"/novel/" + book.id} target="_blank" style={{ color: "#1a1a1a" }}>
+                  <Link
+                    to={"/novel/" + book.id}
+                    target="_blank"
+                    style={{ color: "#1a1a1a" }}
+                  >
                     <div className="book-info-title">
-                      <div className="book-info-titlehead">{book.name}</div><span className="book-info-author">类型:{book.type} | 作者:{book.author}</span>
+                      <div className="book-info-titlehead">{book.name}</div>
+                      <span className="book-info-author">
+                        类型:{book.type} | 作者:{book.author}
+                      </span>
                     </div>
                   </Link>
-                  <div >
-                    <p>
-                      {book.introduction}
-                    </p>
+                  <div>
+                    <p>{book.introduction}</p>
                   </div>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </Content>
     </Layout>
-  )
+  );
 }

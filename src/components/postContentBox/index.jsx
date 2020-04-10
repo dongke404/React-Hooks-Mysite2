@@ -62,7 +62,7 @@ export default function PostContentBox(props) {
                   <span className="icons-list" style={{ color: "#555555" }}>
                     <UserOutlined />
                     &nbsp;&nbsp;
-                    <Link to="" target="_blank">
+                    <Link to={"/user/" +item.user.id } >
                       {item.user.nickname}
                     </Link>
                     &nbsp;&nbsp;|
@@ -104,7 +104,7 @@ export default function PostContentBox(props) {
                   <span className="icons-list" style={{ color: "#555555" }}>
                     <UserOutlined />
                     &nbsp;&nbsp;
-                    <Link to="" target="_blank">
+                    <Link to={"/user/" +item.user.id } >
                       {item.user.nickname}
                     </Link>
                     &nbsp;&nbsp;|

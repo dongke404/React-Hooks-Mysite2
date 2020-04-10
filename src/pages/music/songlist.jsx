@@ -11,6 +11,7 @@ import storage from "../../utils/storageUtil"
 
 function Songlist(props) {
   const music_like=storage.getUser().music_like
+  const token=storage.getUser().token||""
   const [data, setdata] = useState([])
   const [myMusic, setmyMusic] = useState(music_like?music_like:[])
   const MusicPlayer = useContext(MusicContext)
@@ -36,7 +37,7 @@ function Songlist(props) {
 
   //点击收藏
   const toLike = async(e) => {
-    const result=await addmusicLike(e.target.getAttribute("sid"))
+    const result=await addmusicLike(e.target.getAttribute("sid"),token)
     if(result.status===0){
       setmyMusic(result.data)
       let user=storage.getUser()
@@ -87,7 +88,6 @@ function Songlist(props) {
     var newmusicList = MusicPlayer.playerList
     //用户点击同一首歌去重
     var flag = 0
-    console.log(newmusicList)
     for (let index = 0; index < newmusicList.length; index++) {
       const element = newmusicList[index];
       // eslint-disable-next-line eqeqeq
