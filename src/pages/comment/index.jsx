@@ -12,6 +12,7 @@ import {
 import storage from "../../utils/storageUtil";
 import ReplayStyle from "./replayStyle";
 import { Link } from "react-router-dom";
+import {BASEURL} from  "../../config/index"
 var dayjs = require("dayjs");
 
 
@@ -183,7 +184,7 @@ const Comment = (props) => {
               <tbody>
                 <tr>
                   <td>
-                    <img src={theme.head_link} className="avatar" alt="" />
+                    <img src={BASEURL+theme.head_link} className="avatar" alt="" />
                   </td>
                   <td style={{ width: 10, verticalAlign: "top" }}></td>
                   <td>

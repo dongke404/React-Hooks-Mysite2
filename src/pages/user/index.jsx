@@ -5,7 +5,7 @@ import storage from "../../utils/storageUtil";
 import UserTopic from "./userTopic";
 import UserFollow from "./userFollow";
 import { requbasicinfo ,reqFollow} from "../../api";
-
+import { BASEURL } from "../../config/index";
 
 export default function Userinfo(props) {
   const token = storage.getUser().token || "";
@@ -43,7 +43,7 @@ export default function Userinfo(props) {
       <div className="userInfo-side">
         <div className="header">
           <div className="uavatar">
-            <img src={userbinfo.head_link} alt="" />
+            <img src={BASEURL+userbinfo.head_link} alt="" />
           </div>
           <div className="sep10"></div>
           <p className="nickname">{userbinfo.nickname}</p>

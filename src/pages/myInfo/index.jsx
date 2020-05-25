@@ -9,7 +9,7 @@ import RepCmt from "./myRepCmt";
 import MyFollow from "./myFollow";
 import MyStoryhis from "./myStoryhis";
 import storage from "../../utils/storageUtil";
-
+import { BASEURL } from "../../config/index";
 
 export default function Myinfo(props) {
   return (
@@ -17,7 +17,7 @@ export default function Myinfo(props) {
       <div className="userInfo-side">
         <div className="header">
           <div className="uavatar">
-            <img src={storage.getUser().head_link} alt=""/>
+            <img src={BASEURL+storage.getUser().head_link} alt=""/>
           </div>
           <div className="sep10"></div>
           <p className="nickname">{storage.getUser().nickname}</p>

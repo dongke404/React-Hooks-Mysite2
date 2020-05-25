@@ -6,6 +6,7 @@ import { reqTopic } from "../.../../../api";
 import { Link } from "react-router-dom";
 import { CurtypeId } from "../../pages/home/index";
 import { UserOutlined, EyeOutlined, MessageOutlined } from "@ant-design/icons";
+import {BASEURL} from '../../config/index'
 var dayjs = require('dayjs')
 
 export default function PostContentBox(props) {
@@ -55,7 +56,7 @@ export default function PostContentBox(props) {
                 </Link>
                 <div className="uimage">
                   {item.images.map((item1, index) => {
-                    return <img src={item1} alt="" key={index} />;
+                    return <img src={(item1.indexOf("http://") !== -1?"":BASEURL)+item1} alt="" key={index} />;
                   })}
                 </div>
                 <div className="info ">
@@ -92,7 +93,7 @@ export default function PostContentBox(props) {
             <div className="postContentBox" key={item.id}>
               <div className="uimage">
                 {item.images.map((item1, index) => {
-                  return <img src={item1} alt="" key={index} />;
+                  return <img src={(item1.indexOf("http://") !== -1?"":BASEURL)+item1} alt="11" key={index} />;
                 })}
               </div>
               <div className="textBox">

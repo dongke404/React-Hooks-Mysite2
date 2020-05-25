@@ -6,11 +6,12 @@ import storage from "../../utils/storageUtil";
 import { CaretDownOutlined } from "@ant-design/icons";
 import Cavatar from "../cAvatar";
 import { reqCkuser } from "../../api";
+import { BASEURL } from "../../config/index";
 
 const Header = () => {
   const [ishow, setishow] = useState(false);
   const [user, setuser] = useState(storage.getUser());
-  const [avatarSrc, setAvatarSrc] = useState(storage.getUser().head_link);
+  const [avatarSrc, setAvatarSrc] = useState(BASEURL+storage.getUser().head_link);
   // 身份过期清除
   useEffect(() => {
     const toCkuser = async () => {
@@ -18,7 +19,7 @@ const Header = () => {
       if (res.status !== 0) {
         storage.removeUser();
         setuser("");
-      } 
+      }
     };
     toCkuser();
   }, [user]);

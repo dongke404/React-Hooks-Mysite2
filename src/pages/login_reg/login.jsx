@@ -44,7 +44,7 @@ const Login = (props) => {
         initialValues={{
           remember: true,
           loginname: rname,
-          password: rpwd,
+          password: rpwd
         }}
         onFinish={onFinish}
       >
@@ -67,7 +67,7 @@ const Login = (props) => {
           name="password"
           rules={[
             { min: 4, message: "用户名需要大于4位" },
-            { required: true, message: "Please input your Password!" },
+            { required: true, message: "Please input your Password!" }
           ]}
         >
           <Input

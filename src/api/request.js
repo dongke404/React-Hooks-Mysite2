@@ -1,9 +1,11 @@
 import axios from 'axios'
+import {BASEURL} from '../config/index'
+
 
 export function request0(config) {
   // 1.创建axios的实例
   const instance = axios.create({
-    baseURL: '/api',
+    baseURL: BASEURL+'/api',
     timeout: 10000
   })
   // 2.1.请求拦截的作用
@@ -25,7 +27,7 @@ export function request0(config) {
 
 export function request1(config) {
   const instance = axios.create({
-    baseURL: "",
+    baseURL: BASEURL,
     timeout: 5000
   })
   instance.interceptors.request.use(config => {

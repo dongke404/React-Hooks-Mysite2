@@ -1,7 +1,9 @@
 import { request0, request1 } from './request'
 import axios from "axios"
 import storage from "../utils/storageUtil"
+import {BASEURL} from '../config/index'
 const utoken = storage.getUser().token
+
 //用户名校验请求
 export const reqCkLogname = (loginname) => request0({ url: '/reg', params: { loginname }, method: 'GET' })
 //注册请求
@@ -27,7 +29,7 @@ export const reqTopicTypes = () => request0('/topicTypes')
 //上传头像
 export const uploadHeadImg = (formdata) => {
   const config = { headers: { "encrypt": "multipart/form-data" } };
-  return axios.post("/api/uploadhead", formdata, config)
+  return axios.post(BASEURL+"/api/uploadhead", formdata, config)
 }
 //获取帖子详情
 export const reqPostDetail = (id) => request0({ url: '/reqpostdetail', params: { id }, method: 'GET' })

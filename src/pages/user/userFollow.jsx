@@ -3,6 +3,7 @@ import storage from "../../utils/storageUtil";
 import { reqUFollowUser, reqFollow } from "../../api";
 import { Pagination, message } from "antd";
 import { Link } from "react-router-dom";
+import {BASEURL} from "../../config/index"
 
 export default function UserFollow(props) {
   const flag = props.match.params.flag;
@@ -49,7 +50,7 @@ export default function UserFollow(props) {
               <tbody>
                 <tr>
                   <td className="td0">
-                    <img src={item.head_link} className="avatar" alt="" />
+                    <img src={BASEURL+item.head_link} className="avatar" alt="" />
                   </td>
                   <td className="td1">
                     <Link to={"/user/" + item.id}>{item.nickname}</Link>

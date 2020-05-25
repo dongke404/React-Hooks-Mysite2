@@ -18,17 +18,17 @@ import storage from '../../utils/storageUtil'
 const formItemLayout = {
   labelCol: {
     xs: {span: 24},
-    sm: {span: 8},
+    sm: {span: 8}
   },
   wrapperCol: {
-    xs: {span: 24,},
-    sm: {span: 16,},
+    xs: {span: 24},
+    sm: {span: 16}
   },
 };
 const tailFormItemLayout = {
   wrapperCol: {
-    xs: { span: 24, offset: 0, },
-    sm: { span: 16, offset: 8, },
+    xs: { span: 24, offset: 0 },
+    sm: { span: 16, offset: 8}
   },
 };
 
@@ -98,8 +98,8 @@ const Reg = (props) => {
           name="email"
           label="邮箱"
           rules={[
-            { type: 'email', message: 'The input is not valid E-mail!', },
-            { required: true, message: 'Please input your E-mail!', },
+            { type: 'email', message: 'The input is not valid E-mail!'},
+            { required: true, message: 'Please input your E-mail!' },
           ]}
         >
           <Input />
@@ -109,8 +109,8 @@ const Reg = (props) => {
           name="password"
           label="密码"
           rules={[
-            { required: true, message: '请输入密码!', },
-            { min: 6, message: '密码需要大于6位' },
+            { required: true, message: '请输入密码!' },
+            { min: 6, message: '密码需要大于6位' }
           ]}
           hasFeedback
         >

@@ -4,6 +4,7 @@ import { Card, Popover, Tag } from "antd";
 import "./index.less";
 import { reqMovies } from "../../api";
 import { MOVIEBASEURL } from "../../config";
+import {BASEURL} from '../../config/index'
 
 const gridStyle = {
   width: "12.5%",
@@ -107,7 +108,7 @@ export default function Movie() {
               <Card.Grid style={gridStyle}>
                 <img
                   className="movie-img"
-                  src={"/static/images/movieImg/" + item.subject.id + ".jpg"}
+                  src={BASEURL+"/static/images/movieImg/" + item.subject.id + ".jpg"}
                   alt={item.subject.id}
                   flag={item.subject.id}
                   title={item.subject.title}

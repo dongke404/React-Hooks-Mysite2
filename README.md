@@ -1,68 +1,45 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### 本项目主要采用react-hooks+antd开发,脚手架搭建，适合学习,也适合更改成毕业设计设或面试项目所使用。
 
-## Available Scripts
+##### 原react版本(没用react-hooks)的源码[https://github.com/dongke404/React-Mysite](https://github.com/dongke404/React-Mysite)此版缺少很多功能
 
-In the project directory, you can run:
+##### 由于项目是作为初学者时写的，还需要自学与找工作,也没过多时间修改样式和多多规范化代码。自学没经验工作也是实在难找，喜欢的小伙伴可以帮我点个star。页面比较粗糙,有兴趣的可以自行修改样式或者重造结构。
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**安装**
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```
+yarn
+```
 
-### `yarn test`
+**运行**
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn start
+```
+**yarn**
 
-### `yarn build`
+```
+yarn build
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+项目接口:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+在src/api 文件夹里查阅
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+接口我采用python+Flask所写,源码地址：
+[https://github.com/dongke404/Flask-Mysite2API](https://github.com/dongke404/Flask-Mysite2API)
 
-### `yarn eject`
+效果图
+![image](http://www.dongkirk.xyz/static/images/uploadImg/202005251332348956469-24.jpg)
+![image](http://www.dongkirk.xyz/static/images/uploadImg/202005251332417322780-12.jpg)
+![image](http://www.dongkirk.xyz/static/images/uploadImg/202005251332481579270-28.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+功能简述：
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- 首页：登陆注册（采用jwt模块验证身份过期),截图上传头像
+- 帖子页：发表，评论，回复，上传图片，关注，被关注，点赞
+- 音乐页：点击播放，添加到播放列表，搜索音乐，点击我喜欢，播放器全局播放等
+- 小说页：搜索，滚动加载，自动添加历史记录，
+- 图片页：flex布局，点击放大
+- 个人信息页：查看我的收藏，我参与的回复，我的发表，相关关注功能

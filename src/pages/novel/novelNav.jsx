@@ -6,7 +6,7 @@ import NovelDirs from "./novelDirs";
 import NovelContent from "./novelContent";
 import storage from "../../utils/storageUtil";
 import { useState } from "react";
-
+import { BASEURL } from "../../config/index";
 import { reqStoryHistory } from "../../api";
 
 export default function NoverNav() {
@@ -35,7 +35,7 @@ export default function NoverNav() {
           <div className="story-detail-head-right">
             {user ? (
               <div>
-                <Avatar size="large" src={user.head_link}></Avatar>
+                <Avatar size="large" src={BASEURL+user.head_link}></Avatar>
                 <Popover
                   title="历史记录"
                   trigger="hover"

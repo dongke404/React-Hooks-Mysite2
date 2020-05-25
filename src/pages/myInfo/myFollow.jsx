@@ -4,6 +4,7 @@ import "./index.less";
 import { reqFollowUser, reqFollow, reqRmFollow } from "../../api";
 import { Pagination } from "antd";
 import { Link } from "react-router-dom";
+import { BASEURL } from "../../config/index";
 
 export default function MyFollow(props) {
   const flag = props.match.params.id;
@@ -56,11 +57,7 @@ export default function MyFollow(props) {
               <tbody>
                 <tr>
                   <td className="td0">
-                    <img
-                      src={item.head_link}
-                      className="avatar"
-                      alt=""
-                    />
+                    <img src={BASEURL+item.head_link} className="avatar" alt="" />
                   </td>
                   <td className="td1">
                     <Link to={"/user/" + item.id}>{item.nickname}</Link>

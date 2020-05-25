@@ -6,6 +6,8 @@ import base64toFile from "../../utils/base64toFile";
 import AvatarEditor from "react-avatar-editor";
 import storage from "../../utils/storageUtil";
 
+import {BASEURL} from "../../config/index"
+
 export default function Cavatar(props) {
   const ishow = props.ishow;
   const handleCancel = (e) => {
@@ -64,9 +66,9 @@ export default function Cavatar(props) {
       } else {
         message.info("上传成功");
         const user = storage.getUser();
-        user.head_link = val.data.avatarPath;
+        user.head_link = BASEURL+val.data.avatarPath;
         storage.saveUser(user);
-        props.setAvatar(val.data.avatarPath);
+        props.setAvatar(BASEURL+val.data.avatarPath);
       }
     });
   };

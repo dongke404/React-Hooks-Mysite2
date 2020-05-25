@@ -4,6 +4,7 @@ import Editor from "../../components/editor";
 import { reqUploadTopic, reqTopicTypes, reqCkuser } from "../../api";
 import storage from "../../utils/storageUtil";
 import { message } from "antd";
+import { BASEURL } from "../../config/index";
 
 export default function PubTheme(props) {
   const user = storage.getUser();
@@ -73,7 +74,7 @@ export default function PubTheme(props) {
               <tbody>
                 <tr>
                   <td>
-                    <img src={user.head_link} className="avatar" alt="" />
+                    <img src={BASEURL+user.head_link} className="avatar" alt="" />
                   </td>
                   <td style={{ width: 10, verticalAlign: "top" }}></td>
                   <td>
