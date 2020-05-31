@@ -27,7 +27,7 @@ yarn build
 在src/api 文件夹里查阅
 
 接口我采用python+Flask所写,源码地址：
-[https://github.com/dongke404/Flask-Mysite2API](https://github.com/dongke404/Flask-Mysite2API)
+[https://github.com/dongke404/Flask-Mysite2API](https://github.com/dongke404/flask-mysite2-api)
 
 效果图
 ![image](http://www.dongkirk.xyz/static/images/uploadImg/202005251332348956469-24.jpg)
